@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flota STE | Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Sidebar mágico -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <img src="/img/LogoSTE.png" alt="Logo" class="logo-img">
+            <div class="logo-text">Flota STE</div>
+        </div>
+        <nav>
+            <a href="/admin/dashboard" class="nav-link active"><i
+                    class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+            <a href="/admin/buses" class="nav-link"><i class="bi bi-bus-front-fill"></i><span>Autobuses</span></a>
+            <a href="/admin/mantenimientos" class="nav-link"><i class="bi bi-tools"></i><span>Mantenimientos</span></a>
+            <a href="/admin/personal" class="nav-link"><i class="bi bi-people-fill"></i><span>Personal</span></a>
+            <a href="/admin/rastreo" class="nav-link"><i class="bi bi-geo-alt-fill"></i><span>Rastreo en Vivo</span></a>
+        </nav>
+        <div class="p-3">
+            <button class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#chatModal">
+                <i class="bi bi-headset"></i> <span>Asistencia IA</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content d-flex flex-column">
+        <header class="d-flex justify-content-between align-items-center px-4 py-3 bg-primary text-white shadow">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-primary d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h4 class="mb-0">Sistema de Gestión - Flota STE</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button id="themeToggle" class="btn btn-outline-light">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                <span class="d-none d-md-block fw-bold">
+                    <%= user?.nombre || user?.username %>
+                </span>
+                <a href="/logout" class="btn btn-outline-danger">Salir</a>
+            </div>
+        </header>
+
+        <main class="flex-grow-1 p-4">
+            <div class="container-fluid">
+                <h1 class="display-5 fw-bold mb-4">¡Bienvenido al sistema, <%= user?.nombre || 'Admin' %>!</h1>
+                <!-- Tus tarjetas aquí -->
+                <div class="row g-4">
+                    <!-- Copia las 4 tarjetas que ya teníamos -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center py-3 border-top bg-dark text-white">
+            <small>Flota STE v1.0 • © 2025 Ricardo Alexis Martínez Ávila • Orgullosamente hecho en Perú</small>
+        </footer>
+    </div>
+
+    <!-- Modal Chat IA -->
+    <div class="modal fade" id="chatModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-robot"></i> Asistencia IA - Flota STE</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="chatOutput" class="border rounded p-3 mb-3"
+                        style="height:350px;overflow-y:auto;background:#f8f9fa;"></div>
+                    <div class="input-group">
+                        <input type="text" id="chatInput" class="form-control" placeholder="Pregunta lo que quieras...">
+                        <button class="btn btn-primary" onclick="enviarPregunta()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

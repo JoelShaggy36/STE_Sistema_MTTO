@@ -1,0 +1,35 @@
+<!-- views/user/dashboard.ejs -->
+<div class="container-fluid">
+    <h1 class="mb-4">Hola, <%= user.nombre %> (Usuario)</h1>
+
+    <div class="alert alert-info">
+        <h5>¡Bienvenido al sistema!</h5>
+        <p>Puedes ver el estado de los autobuses asignados y reportar mantenimientos.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Mis Autobuses</h5>
+                </div>
+                <div class="card-body">
+                    <p>Aquí aparecerán los autobuses que tienes asignados.</p>
+                    <a href="/user/mis-buses" class="btn btn-primary">Ver mis autobuses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Reportar Mantenimiento</h5>
+                </div>
+                <div class="card-body">
+                    <p>Registra mantenimientos para tus autobuses.</p>
+                    <a href="/user/reportar-mantenimiento" class="btn btn-success">Reportar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

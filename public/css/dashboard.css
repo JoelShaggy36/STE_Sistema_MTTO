@@ -1,0 +1,125 @@
+:root {
+    --sidebar-width: 280px;
+    --sidebar-collapsed: 78px;
+    --primary: #0d6efd;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: var(--sidebar-collapsed);
+    height: 100vh;
+    background: #1e293b;
+    position: fixed;
+    left: 0;
+    top: 1000;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar:hover {
+    width: var(--sidebar-width);
+}
+
+.sidebar .logo-area {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+    height: 78px;
+    overflow: hidden;
+}
+
+.sidebar .logo-img {
+    height: 50px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.sidebar .logo-text {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.sidebar:hover .logo-img,
+.sidebar:hover .logo-text {
+    opacity: 1;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-radius: 0 25px 25px 0;
+    margin: 4px 12px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--primary);
+    color: white;
+    transform: translateX(10px);
+}
+
+.nav-link i {
+    font-size: 1.5rem;
+    width: 32px;
+    text-align: center;
+}
+
+.nav-link span {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.sidebar:hover .nav-link span {
+    opacity: 1;
+}
+
+.main-content {
+    margin-left: var(--sidebar-collapsed);
+    min-height: 100vh;
+    background: #0f172a;
+    color: white;
+    transition: margin-left 0.4s;
+}
+
+.sidebar:hover~.main-content {
+    margin-left: var(--sidebar-width);
+}
+
+/* Modo claro */
+[data-theme="light"] {
+    background: #f8fafc !important;
+    color: #1e293b;
+}
+
+[data-theme="light"] .sidebar {
+    background: #ffffff;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .main-content {
+    background: #f1f5f9;
+}
+
+[data-theme="light"] .nav-link {
+    color: #64748b;
+}
+
+[data-theme="light"] .nav-link:hover {
+    background: var(--primary);
+    color: white;
+}

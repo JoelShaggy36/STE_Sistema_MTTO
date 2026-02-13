@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Flota STE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: #fff;
+        }
+
+        section {
+            background: url('/img/Yutong.jpg') center/cover no-repeat;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px 40px;
+            border-radius: 15px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px #000;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .control {
+            margin: 15px 0;
+        }
+
+        .control label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .control input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .control button.btn1 {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .bad {
+            background: #dc2626;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="form-container">
+            <h1>BIENVENIDO</h1>
+
+            <form action="/login" method="POST">
+                <div class="control">
+                    <label>Usuario</label>
+                    <input type="text" name="username" required autocomplete="username">
+                </div>
+
+                <div class="control">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <button type="button" class="btn1"
+                        onclick="document.getElementById('password').type = document.getElementById('password').type === 'password' ? 'text' : 'password'">Mostrar</button>
+                </div>
+
+                <% if (error) { %>
+                    <div class="bad">
+                        <%= error %>
+                    </div>
+                    <% } %>
+
+                        <button type="submit" class="btn">
+                            ENTRAR AL SISTEMA
+                        </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Solo por si acaso (no es necesario, pero ayuda)
+        console.log("Formulario cargado correctamente");
+    </script>
+</body>
+
+</html>
