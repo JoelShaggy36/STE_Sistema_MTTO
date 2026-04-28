@@ -3,6 +3,10 @@ const router = express.Router();
 const pool = require('../config/db');
 const bcrypt = require('bcrypt');
 
+
+router.get('/', (req, res) => {
+    res.redirect('/login');
+});
 // GET - Mostrar login
 router.get('/login', (req, res) => {
     if (req.session.user) {
