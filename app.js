@@ -37,9 +37,47 @@ app.get('/admin/dashboard', (req, res) => {
 });
 
 // ====== OTRAS RUTAS ADMIN (buses, etc.) ======
-app.get('/admin/buses', (req, res) => {
-    if (!req.session.user || req.session.user.rol !== 'admin') return res.redirect('/login');
-    res.render('admin/buses', { user: req.session.user });
+app.get('/admin/buses', async (req, res) => {
+    if (!req.session.user || req.session.user.rol !== 'admin') {
+        return res.redirect('/login');
+    }
+
+    try {
+        //Traer datos reales
+        const [generacionesResult,
+                modelosResult,
+                depositosResult,
+                busesResult] = await Promise.all([
+            pool.query('SELECT * FROM generaciones'),
+            pool.query('SELECT * FROM  modelos'),
+            pool.query('SELECT * FROM  depositos'),
+            pool.query('SELECT * FROM  buses')]);
+            
+        
+        const generaciones = generacionesResult[0];
+        const modelos = modelosResult[0];
+        const depositos = depositosResult[0];
+        const buses = busesResult[0];
+    
+        res.render('admin/buses', {
+            user: req.session.user,
+            generaciones,
+            modelos,
+            depositos,
+            buses
+        });
+
+    } catch (error) {
+        console.error('Error cargando buses:', error);
+
+        res.render('admin/buses', {
+            user: req.session.user,
+            generaciones: [], 
+            modelos: [],
+            depositos: [],
+            buses: []
+        });
+    }
 });
 
 app.get('/admin/mantenimientos', (req, res) => {

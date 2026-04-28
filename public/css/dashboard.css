@@ -29,7 +29,7 @@ body {
 .sidebar .logo-area {
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #334155;
+    border-bottom: 1px solid #ffffff;
     height: 78px;
     overflow: hidden;
 }
@@ -116,7 +116,7 @@ body {
 }
 
 [data-theme="light"] .nav-link {
-    color: #2b2323;
+    color: #64748b;
 }
 
 [data-theme="light"] .nav-link:hover {
